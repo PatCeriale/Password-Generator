@@ -36,4 +36,4 @@ The purpose of this project was to create a password generator with the followin
 
 **Preview**
 
->
+> ![Screen Shot 2020-09-11 at 3 16 11 PM](https://user-images.githubusercontent.com/68709356/92977392-c0a03d80-f441-11ea-9033-359bc5d73138.png)
