@@ -75,10 +75,10 @@ function generatePassword() {
   let useNumber = false;
   let useSymbol = false;
   while (!useLowercase && !useUppercase && !useNumber && !useSymbol) {
-    useLowercase = confirm("Do you want lowercase?");
-    useUppercase = confirm("Do you want uppercase?");
-    useNumber = confirm("Do you want number?");
-    useSymbol = confirm("Do you want symbol?");
+    useLowercase = confirm("Do you want lowercase letters?");
+    useUppercase = confirm("Do you want uppercase letters?");
+    useNumber = confirm("Do you want numbers?");
+    useSymbol = confirm("Do you want symbols?");
     if (!useLowercase && !useUppercase && !useNumber && !useSymbol) {
       alert("Some criteria must be selected to generate password");
     }
@@ -118,7 +118,7 @@ function generatePassword() {
     );
     passwordLength = parseInt(passwordLength);
     if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-      prompt("Password must be 8-128 characters");
+      alert("Password must be 8-128 characters");
     }
   }
 
