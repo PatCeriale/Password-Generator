@@ -9,16 +9,6 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// TODO: Create generatePassword function
-
-// TODO: Add validations to make sure at least one type of character is selected and alert if none are
-
-// TODO: Create a prompt to ask length of password and save it to a variable
-
-// TODO: Add validation to the length to make sure it is between 8-128 characters
-
-// TODO: After prompts are completed, create password
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
@@ -123,8 +113,13 @@ function generatePassword() {
 
   while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
     console.log(passwordLength);
-    passwordLength = prompt("How long should the password be?");
+    passwordLength = prompt(
+      "How long should the password be between 8-128 characters?"
+    );
     passwordLength = parseInt(passwordLength);
+    if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+      prompt("Password must be 8-128 characters");
+    }
   }
 
   // for the number of times that the user specified add a new random character to our password
