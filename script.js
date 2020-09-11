@@ -22,25 +22,25 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//Character Arrays
+//Lowercase character array
 var lowercaseLetterOffset = 0xfeff0061;
 var lowercaseArray = [];
 for (let i = 0; i < 26; i++) {
   lowercaseArray[i] = String.fromCharCode(lowercaseLetterOffset + i);
 }
-
+//Uppercase character array
 var uppercaseLetterOffset = 0xfeff0041;
 var uppercaseArray = [];
 for (var i = 0; i < 26; i++) {
   uppercaseArray[i] = String.fromCharCode(uppercaseLetterOffset + i);
 }
-
+//Number character array
 var numberOffset = 0xfeff0030;
 var numberArray = [];
 for (var i = 0; i < 10; i++) {
   numberArray[i] = String.fromCharCode(numberOffset + i);
 }
-
+//Symbol character array
 var symbolArray = [
   "!",
   "@",
@@ -78,6 +78,7 @@ var symbolArray = [
 ];
 
 function generatePassword() {
+  let password = "";
   // Confirms what characters the user wishes to use. Alert user and loop confirms if no criteria was chosen.
   let useLowercase = false;
   let useUppercase = false;
@@ -96,17 +97,23 @@ function generatePassword() {
   let charactersToUse = [];
   // conditionally (if) add characters to charactersToUse from other arrays
   if (useLowercase === true) {
-    //use lowercase array or other value???
-    charactersToUse.push(lowercaseArray);
+    password +=
+      //if array is chosen, in this case lowercase,
+      lowercaseArray[Math.floor(Math.random() * lowercaseArray.length)];
+    charactersToUse = charactersToUse.concat(lowercaseArray);
   }
   if (useUppercase === true) {
-    charactersToUse.push(uppercaseArray);
+    password +=
+      uppercaseArray[Math.floor(Math.random() * uppercaseArray.length)];
+    charactersToUse = charactersToUse.concat(uppercaseArray);
   }
   if (useNumber === true) {
-    charactersToUse.push(numberArray);
+    password += numberArray[Math.floor(Math.random() * numberArray.length)];
+    charactersToUse = charactersToUse.concat(numberArray);
   }
   if (useSymbol === true) {
-    charactersToUse.push(symbolArray);
+    password += symbolArray[Math.floor(Math.random() * symbolArray.length)];
+    charactersToUse = charactersToUse.concat(symbolArray);
   }
 
   console.log(charactersToUse);
@@ -120,13 +127,11 @@ function generatePassword() {
     passwordLength = prompt("How long should the password be?");
   }
 
-  let password = "";
   // for the number of times that the user specified add a new random character to our password
 
-  for (let i = 0; i < passwordLength; i++) {
-    let newChar = charactersToUse.charAt(
-      Math.floor(Math.random() * passwordLength)
-    );
+  for (let i = password.length; i < passwordLength; i++) {
+    let newChar =
+      charactersToUse[Math.floor(Math.random() * charactersToUse.length)];
     // generate a new character with charactersToUse
 
     password += newChar;
