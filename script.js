@@ -22,7 +22,7 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//Position in script?
+//Character Arrays
 var lowercaseLetterOffset = 0xfeff0061;
 var lowercaseArray = [];
 for (let i = 0; i < 26; i++) {
@@ -37,7 +37,7 @@ for (var i = 0; i < 26; i++) {
 
 var numberOffset = 0xfeff0030;
 var numberArray = [];
-for (var i = 0; i < 26; i++) {
+for (var i = 0; i < 10; i++) {
   numberArray[i] = String.fromCharCode(numberOffset + i);
 }
 
@@ -89,29 +89,30 @@ function generatePassword() {
     useNumber = confirm("Do you want number?");
     useSymbol = confirm("Do you want symbol?");
     if (!useLowercase && !useUppercase && !useNumber && !useSymbol) {
-      alert("Some criteria must be selected");
+      alert("Some criteria must be selected to generate password");
     }
   }
 
   let charactersToUse = [];
   // conditionally (if) add characters to charactersToUse from other arrays
-  if ((useLowercase = true)) {
-    charactersToUse.push(1);
+  if (useLowercase === true) {
+    //use lowercase array or other value???
+    charactersToUse.push(lowercaseArray);
   }
-  if ((useUppercase = true)) {
-    charactersToUse.push(2);
+  if (useUppercase === true) {
+    charactersToUse.push(uppercaseArray);
   }
-  if ((useNumber = true)) {
-    charactersToUse.push(3);
+  if (useNumber === true) {
+    charactersToUse.push(numberArray);
   }
-  if ((useSymbol = true)) {
-    charactersToUse.push(4);
+  if (useSymbol === true) {
+    charactersToUse.push(symbolArray);
   }
 
   console.log(charactersToUse);
 
   let passwordLength;
-  // while the user gives an invalid response ask agin
+  // while the user gives an invalid response ask again
   while (
     isNaN(passwordLength) ||
     (passwordLength < "8" && passwordLength > "128")
@@ -123,7 +124,9 @@ function generatePassword() {
   // for the number of times that the user specified add a new random character to our password
 
   for (let i = 0; i < passwordLength; i++) {
-    let newChar = "h";
+    let newChar = charactersToUse.charAt(
+      Math.floor(Math.random() * passwordLength)
+    );
     // generate a new character with charactersToUse
 
     password += newChar;
