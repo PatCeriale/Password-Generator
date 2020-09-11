@@ -120,11 +120,11 @@ function generatePassword() {
 
   let passwordLength;
   // while the user gives an invalid response ask again
-  while (
-    isNaN(passwordLength) ||
-    (passwordLength < "8" && passwordLength > "128")
-  ) {
+
+  while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+    console.log(passwordLength);
     passwordLength = prompt("How long should the password be?");
+    passwordLength = parseInt(passwordLength);
   }
 
   // for the number of times that the user specified add a new random character to our password
