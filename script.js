@@ -106,13 +106,10 @@ function generatePassword() {
     charactersToUse = charactersToUse.concat(symbolArray);
   }
 
-  console.log(charactersToUse);
-
   let passwordLength;
   // while the user gives an invalid response ask again
 
   while (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
-    console.log(passwordLength);
     passwordLength = prompt(
       "How long should the password be between 8-128 characters?"
     );

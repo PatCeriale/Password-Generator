@@ -24,7 +24,7 @@ The purpose of this project was to create a password generator with the followin
 
 **Technologies**
 
-> This password generator was created with HTML, CSS as well as JavaScript.
+> This password generator was created with HTML, CSS as well as JavaScript. First the user is prompted for what characters they would like to include in their password from a list of arrays containing the characters. The user is then asked how long they would like their password to be from 8-128 characters. The user's inputs are used to propagate as many characters as requested from those selected to use.
 
 **Future Development**
 
